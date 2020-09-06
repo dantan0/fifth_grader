@@ -1,12 +1,45 @@
+@font-face {
+  font-family: "Landasans";
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/LandasansMedium-ALJ6m.otf');
+}
+
 body {
   background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
   text-align: center;
-  font-size: 36px;
-  font-family: sans-serif;
+  font-size: 40px;
+  font-family: "Landasans";
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: inline;
+  padding: 3%;
+}
+
+#operations li {
+  font-size: 6vw;
+  margin-bottom: 0
+}
+
+.field {
+  width: 30%;
+}
+
+#level-message {
+  margin-top: 12%;
+  margin-bottom: 3%;
+}
+
+#level {
+  margin-bottom: 4%;
 }
 
 #stats {
-  margin-top: 5%;
   margin-bottom: 5%;
   text-align: center;
   width: 75%;
@@ -14,36 +47,31 @@ body {
 }
 
 #welcome {
-    font-size: 48px;
-    margin-bottom: 15%;
+  font-size: 5vw;
+  margin-bottom: 10%;
 }
 
 #problem {
-  margin-top: 10%;
-  font-size: 48px;
+  margin-top: 5%;
+  font-size: 6vw;
 }
 
 #winner {
-    font-size: 72px;
-    color: green;
+  margin-top: 11%;
+  margin-bottom: 2%;
+  font-size: 6vw;
+  color: green;
 }
 
 #loser {
-  font-size: 72px;
+  margin-top: 11%;
+  margin-bottom: 2%;
+  font-size: 6vw;
   color: red;
-}
-
-#level {
-  margin-top: 22%;
 }
 
 .incorrect {
     color: red;
-}
-
-.field {
-  margin-top: 2%;
-  width: 20%;
 }
 
 #skip-but {
@@ -57,6 +85,7 @@ body {
 }
 
 #mfade {
+  margin-top: 2%;
   animation-duration: 5s;
   animation-name: mfade;
   opacity: 0%;

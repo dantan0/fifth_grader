@@ -38,7 +38,7 @@ class App extends React.Component {
     return (
       <div>
         <div id="loser"> Sorry, you lost!</div>
-        <button type="button" class="btn btn-outline-primary" onClick = { () => this.clickRestart() }> Restart </button>
+        <button type="button" class="btn btn-outline-primary btn-lg" onClick = { () => this.clickRestart() }> Restart </button>
       </div>
     );
   }
@@ -47,7 +47,7 @@ class App extends React.Component {
     return (
       <div>
         <div id="winner">Congrats, you won!</div>
-        <button type="button" class="btn btn-outline-primary" onClick = { () => this.clickRestart() }> Restart </button>
+        <button type="button" class="btn btn-outline-primary btn-lg" onClick = { () => this.clickRestart() }> Restart </button>
       </div>
     );
   }
@@ -56,7 +56,13 @@ class App extends React.Component {
     return (
     <div>
         <div id="welcome"> Are you smarter than a 5th grader?</div>
-        <div> Pick and enter a math operation first: +, -, *, / </div>
+        <div> Please enter a math operation: </div>
+        <ul id = "operations">
+          <li> + </li>
+          <li> - </li>
+          <li> × </li>
+          <li> ÷ </li>
+        </ul>
         <input class = "field" onKeyPress={this.inputChoice} onChange = {this.updateChoice} autoFocus={true} value = {this.state.choice} />
         <div> {this.state.message} </div>
     </div>
@@ -66,7 +72,12 @@ class App extends React.Component {
   renderLevel() {
     return (
     <div>
-      <div id="level"> Great, now pick and enter a level number: 1. beginner, 2. skilled, 3. master! </div>
+      <div id = "level-message"> Great, now enter a level number (1-3): </div>
+      <ul id = "level">
+        <li> 1. First Rodeo </li>
+        <li> 2. So-So </li>
+        <li> 3. Zenned Shifu </li>
+      </ul>
       <input class = "field" onKeyPress={this.inputLevel} onChange = {this.updateLevel} autoFocus={true} value= {this.state.level} />
       <div> {this.state.message} </div>
     </div>
@@ -76,7 +87,6 @@ class App extends React.Component {
   renderProblem() {
     return (
     <div>
-        <div id = "mfade"> {this.state.message} </div>
         <table id = 'stats'>
           <tr>
             <th>Level: </th>
@@ -94,8 +104,10 @@ class App extends React.Component {
         <div className={this.state.incorrect ? "incorrect" : ""} id="problem">{this.state.num1} {this.state.opsign} {this.state.num2} </div>
         <input id = "answer" onKeyPress={this.inputAnswer} onChange={this.updateResponse} autoFocus={true} value={this.state.response} />
         <button id = "skip-but" type="button" class="btn btn-outline-primary" onClick = { () => this.clickSkip() }> Skip </button>
+        <div id = "mfade"> {this.state.message} </div>
     </div>
-  );}
+  );
+}
 
   inputChoice = (event) => {
     if (event.key === "Enter") {
@@ -111,7 +123,8 @@ class App extends React.Component {
         message: 'Invalid option. Try again',
         restart: false
       });
-    }}}
+    }}
+  }
 
   inputLevel = (event) => {
   if (event.key === "Enter") {
@@ -119,23 +132,24 @@ class App extends React.Component {
     if (lev === 1) {
       this.setState({
         tries: 5,
-        message: 'Nice. You get 5 tries. You need 10 to win the game.'
+        message: 'Welcome. You get 5 tries and need 10 correct ones to win the game.'
       });
     } else if (lev === 2) {
       this.setState({
         tries: 2,
-        message: 'Great! You get 2 tries. You need 10 to win the game'
-    });
-  } else if (lev === 3) {
+        message: 'Cool! You get 2 tries and need 10 correct ones to win the game.'
+      });
+    } else if (lev === 3) {
       this.setState({
         tries: 0,
-        message: 'Wow. Get ready for a challenge! You have no tries and need 10 to win the game'
-    });
+        message: 'Please show your zen power, master! No tries and 10 to win the game.'
+      });
   } else {
       this.setState({
         message: 'Invalid option. Try again.'
       });
-  }}}
+  }}
+}
 
   inputAnswer = (event) => {
     if (event.key === "Enter") {
@@ -198,9 +212,9 @@ class App extends React.Component {
 
   clickSkip = () => {
     this.setState({
-        num1: Math.ceil(Math.random() * 10),
-        num2: Math.ceil(Math.random() * 10),
-        incorrect: false
+      num1: Math.ceil(Math.random() * 10),
+      num2: Math.ceil(Math.random() * 10),
+      incorrect: false
     });
   }
 
@@ -217,6 +231,7 @@ class App extends React.Component {
       num2: 1
     });
   }
+
 }
 
 export default App;
